@@ -46,4 +46,9 @@ public class Data {
 
         return Integer.compare(this.dia, data.dia);
     }
+
+    @Override
+    public String toString() {
+        return dia + "/" + mes + "/" + ano;
+    }
 }

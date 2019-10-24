@@ -24,7 +24,6 @@ public class Contacto {
         return ultimoNome;
     }
 
-
     public long getNumTelefone() {
         return numTelefone;
     }
@@ -35,5 +34,10 @@ public class Contacto {
 
     public Data getDataNascimento() {
         return dataNascimento;
+    }
+
+    @Override
+    public String toString() {
+        return primeiroNome + " " + ultimoNome + " - Nº: " + numTelefone + " - " + morada + " - " + dataNascimento + '\n';
     }
 }
