@@ -40,7 +40,7 @@ public class MainPraticaComparacaoAlgoritmosOrdenacao {
 
             LinkedList<Estatistica> estatisticas = new LinkedList<>();
 
-            for (int i = 10; i < 51; i += 10) {
+            for (int i = 1000; i < 5001; i += 1000) {
                 estatisticas.add(algoritmo.getEstatistica(Arrays.copyOf(contactos, i)));
             }
 

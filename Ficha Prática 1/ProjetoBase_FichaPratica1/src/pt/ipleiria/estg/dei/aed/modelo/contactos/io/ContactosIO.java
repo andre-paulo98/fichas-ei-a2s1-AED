@@ -39,18 +39,8 @@ public class ContactosIO {
         }
 
         return new Contacto(dados[0].trim(), dados[1].trim(),
-                Long.parseLong(dados[2].trim()), dados[3].trim(), parseData(dados[4].trim()));
+                Long.parseLong(dados[2].trim()), dados[3].trim(), Data.parseData(dados[4].trim()));
     }
 
-    private static Data parseData(String data) throws InvalidPropertiesFormatException {
-        String[] partes = data.split("/");
-        if(partes.length != 3) {
-            throw new InvalidPropertiesFormatException("Data inválido");
-        }
-
-        return new Data(Integer.parseInt(partes[2].trim()), Integer.parseInt(partes[1].trim()), Integer.parseInt(partes[0].trim()));
-
-
-    }
 
 }
