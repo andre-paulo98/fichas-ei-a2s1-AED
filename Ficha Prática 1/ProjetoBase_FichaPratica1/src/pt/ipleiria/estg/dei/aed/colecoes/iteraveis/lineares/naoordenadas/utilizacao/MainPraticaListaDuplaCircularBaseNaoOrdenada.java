@@ -1,7 +1,7 @@
 package pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.naoordenadas.utilizacao;
 
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.IteradorIteravelDuplo;
-import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.naoordenadas.estruturas.ListaDuplaCircularBaseNaoOrdenada;
+//import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.naoordenadas.estruturas.ListaDuplaCircularBaseNaoOrdenada;
 import pt.ipleiria.estg.dei.aed.modelo.contactos.Contacto;
 import pt.ipleiria.estg.dei.aed.modelo.contactos.Data;
 
@@ -9,7 +9,7 @@ public class MainPraticaListaDuplaCircularBaseNaoOrdenada {
 
     public MainPraticaListaDuplaCircularBaseNaoOrdenada() {
 
-        ListaDuplaCircularBaseNaoOrdenada<Contacto> lista = new ListaDuplaCircularBaseNaoOrdenada<>();
+        /*ListaDuplaCircularBaseNaoOrdenada<Contacto> lista = new ListaDuplaCircularBaseNaoOrdenada<>();
 
         lista.inserir(new Contacto("Hugo", "Santos", 971234567, "Avenida 1º de Maio", new Data(18, 3, 1994)));
         lista.inserirNoInicio(new Contacto("Ana", "Silva", 950000000, "Rua de Leiria", new Data(1, 10, 1990)));
@@ -39,7 +39,7 @@ public class MainPraticaListaDuplaCircularBaseNaoOrdenada {
         System.out.println("\nApós remoção de elementos");
         for (Contacto contacto : lista) {
             System.out.println(contacto);
-        }
+        }*/
     }
 
 
