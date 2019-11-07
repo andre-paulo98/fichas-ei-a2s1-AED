@@ -42,7 +42,7 @@ public class SubsequenciaSomaMaximaDeOrdemNLog2N extends SubsequenciaSomaMaxima 
         int inicioDir = indicesInicialEFinalDir.getPrimeiro();
         int fimDir = indicesInicialEFinalDir.getSegundo();
         long somaMaximaMeioEsq = 0, somaAtualMeioEsq = 0;
-        int inicioEsqDir =  meio + 1;
+        int inicioEsqDir = meio + 1;
         for (int i = meio; i >= esq; i--) {
             somaAtualMeioEsq += elementos[i];
             if (somaAtualMeioEsq > somaMaximaMeioEsq) {
@@ -53,7 +53,7 @@ public class SubsequenciaSomaMaximaDeOrdemNLog2N extends SubsequenciaSomaMaxima 
         }
 
         long somaMaximaMeioDir = 0, somaAtualMeioDir = 0;
-        int fimEsqDir =  meio;
+        int fimEsqDir = meio;
         for (int i = meio + 1; i <= dir; i++) {
             somaAtualMeioDir += elementos[i];
             if (somaAtualMeioDir > somaMaximaMeioDir) {

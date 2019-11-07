@@ -1,6 +1,9 @@
 package pt.ipleiria.estg.dei.aed.analisecomplexidade.utilizacao;
 
-import pt.ipleiria.estg.dei.aed.analisecomplexidade.algoritmos.*;
+import pt.ipleiria.estg.dei.aed.analisecomplexidade.algoritmos.SubsequenciaSomaMaxima;
+import pt.ipleiria.estg.dei.aed.analisecomplexidade.algoritmos.SubsequenciaSomaMaximaDeOrdemN;
+import pt.ipleiria.estg.dei.aed.analisecomplexidade.algoritmos.SubsequenciaSomaMaximaDeOrdemN2;
+import pt.ipleiria.estg.dei.aed.analisecomplexidade.algoritmos.SubsequenciaSomaMaximaDeOrdemNLog2N;
 import pt.ipleiria.estg.dei.aed.utils.Estatistica;
 import pt.ipleiria.estg.dei.aed.utils.EstatisticaDeIteracoes;
 import pt.ipleiria.estg.dei.aed.utils.VetorDeInteiros;

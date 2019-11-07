@@ -19,7 +19,7 @@ public class SubsequenciaSomaMaximaDeOrdemN2 extends SubsequenciaSomaMaxima {
         int inicio = 0, fim = 0;
         for (int i = 0; i < elementos.length; i++) {
             if (elementos[i] <= 0) {
-               continue;
+                continue;
             }
             somaAtual = 0;
             for (int j = i; j < elementos.length; j++) {
