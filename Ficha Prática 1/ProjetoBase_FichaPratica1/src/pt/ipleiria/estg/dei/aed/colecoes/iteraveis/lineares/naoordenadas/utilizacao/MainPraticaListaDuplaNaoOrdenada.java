@@ -17,6 +17,14 @@ public class MainPraticaListaDuplaNaoOrdenada {
 //        lista.inserirNoInicio(new Contacto("Ana", "Silva", 950000000, "Rua de Leiria", new Data(1, 10, 1990)));
         lista.inserirNoFim(new Contacto("Eça", "Queiroz", 100000000, "Praça do Almada", new Data(25, 11, 1845)));
         lista.inserirNoFim(new Contacto("Ana", "Queiroz", 100000000, "Praça do Almada", new Data(25, 11, 1845)));
+        lista.inserirNoFim(new Contacto("AAAA", "Queiroz", 100000000, "Praça do Almada", new Data(25, 11, 1845)));
+        //lista.inserirNoFim(new Contacto("BBBB", "Queiroz", 100000000, "Praça do Almada", new Data(25, 11, 1845)));
+
+        var a = lista.getNo(0);
+        a = lista.getNo(1);
+        a = lista.getNo(2);
+        a = lista.getNo(3);
+        //a = lista.getNo(4);
 //        lista.inserirNoInicio(new Contacto("Ana", "aaa", 950000000, "Rua de Leiria", new Data(1, 10, 1990)));
 //        lista.inserir(2, new Contacto("Teresa", "Silva", 950000001, "Rua de Leiria", new Data(2, 10, 1990)));
 //        lista.inserir(new Contacto("Ana", "Rita", 990000000, "Travessa 25 de Abril", new Data(15, 6, 2000)));
