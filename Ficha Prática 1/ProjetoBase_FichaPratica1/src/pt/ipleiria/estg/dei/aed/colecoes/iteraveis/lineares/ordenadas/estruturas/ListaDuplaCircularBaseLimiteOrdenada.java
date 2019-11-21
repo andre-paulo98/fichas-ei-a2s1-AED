@@ -142,16 +142,17 @@ public class ListaDuplaCircularBaseLimiteOrdenada<T> implements ColecaoIteravelL
 
     @Override
     public T removerPorReferencia(T elem) {
-        No cor = getNo(elem);
-        while (criterio.comparar(elem, cor.elemento) == 0) {
+        No no = getNoPorReferencia(elem);
+        return no.elemento == elem ? removerNo(no).elemento : null;
+
+        /*while (criterio.comparar(elem, cor.elemento) == 0) {
             if (cor.elemento == elem) {
                 return removerNo(cor).elemento;
             }
 
             cor = cor.seguinte;
         }
-
-        return null;
+        return null;*/
     }
 
     @Override
@@ -307,7 +308,7 @@ public class ListaDuplaCircularBaseLimiteOrdenada<T> implements ColecaoIteravelL
 
         @Override
         public boolean podeRecuar() {
-            return corrente == anteriorAoPrimeiro || corrente.anterior != anteriorAoPrimeiro;
+            return seguinteAoUltimo.anterior != anteriorAoPrimeiro && corrente.anterior != anteriorAoPrimeiro;
         }
 
         @Override
