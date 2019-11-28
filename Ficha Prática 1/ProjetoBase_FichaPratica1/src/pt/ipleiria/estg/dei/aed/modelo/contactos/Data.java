@@ -65,4 +65,23 @@ public class Data {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Data data = (Data) o;
+
+        if (ano != data.ano) return false;
+        if (mes != data.mes) return false;
+        return dia == data.dia;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ano;
+        result = 31 * result + mes;
+        result = 31 * result + dia;
+        return result;
+    }
 }

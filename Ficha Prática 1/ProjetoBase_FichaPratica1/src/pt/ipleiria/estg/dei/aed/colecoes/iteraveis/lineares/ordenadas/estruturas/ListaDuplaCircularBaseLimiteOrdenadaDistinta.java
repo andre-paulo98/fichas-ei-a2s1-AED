@@ -21,8 +21,9 @@ public class ListaDuplaCircularBaseLimiteOrdenadaDistinta<T> extends ListaDuplaC
         numeroElementos++;
     }
 
+    // b
     public T consultarDistinto(T elem) {
-        // TODO continuar
-        return null;
+        T elemento = getNo(elem).elemento;
+        return criterio.comparar(elemento, elem) == 0 ? elemento : null;
     }
 }
