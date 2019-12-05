@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.aed.modelo.contactos;
 
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.IteradorIteravelDuplo;
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.ordenadas.estruturas.ListaDuplaCircularBaseLimiteOrdenada;
+import pt.ipleiria.estg.dei.aed.modelo.Data;
 import pt.ipleiria.estg.dei.aed.modelo.contactos.comparadores.ComparacaoLimiteContactosPrimNomeAscUltiNomeAsc;
 
 public class GestorContactosNumaData {

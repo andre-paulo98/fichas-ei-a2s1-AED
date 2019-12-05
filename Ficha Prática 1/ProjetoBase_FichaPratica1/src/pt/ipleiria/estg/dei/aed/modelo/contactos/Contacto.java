@@ -1,5 +1,7 @@
 package pt.ipleiria.estg.dei.aed.modelo.contactos;
 
+import pt.ipleiria.estg.dei.aed.modelo.Data;
+
 public class Contacto {
 
     private String primeiroNome;

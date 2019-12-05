@@ -1,4 +1,4 @@
-package pt.ipleiria.estg.dei.aed.modelo.contactos;
+package pt.ipleiria.estg.dei.aed.modelo;
 
 import java.util.InvalidPropertiesFormatException;
 
@@ -7,7 +7,7 @@ public class Data {
     private int mes;
     private int dia;
 
-    public Data(int ano, int mes, int dia) {
+    public Data(int dia, int mes, int ano){
         this.ano = ano;
         this.mes = mes;
         this.dia = dia;
@@ -60,7 +60,7 @@ public class Data {
             throw new InvalidPropertiesFormatException("Data inválido");
         }
 
-        return new Data(Integer.parseInt(partes[2].trim()), Integer.parseInt(partes[1].trim()), Integer.parseInt(partes[0].trim()));
+        return new Data(Integer.parseInt(partes[0].trim()), Integer.parseInt(partes[1].trim()), Integer.parseInt(partes[2].trim()));
 
 
     }

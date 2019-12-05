@@ -1,11 +1,12 @@
 package pt.ipleiria.estg.dei.aed.modelo.contactos;
 
 import pt.ipleiria.estg.dei.aed.ComparacaoLimite;
+import pt.ipleiria.estg.dei.aed.modelo.Data;
 
 public enum ComparacaoLimiteGestoresContactosNumaDataPorDataAsc implements ComparacaoLimite<GestorContactosNumaData> {
     CRITERIO;
 
-    private static final GestorContactosNumaData LIMITE = new GestorContactosNumaData(new Data(Integer.MAX_VALUE, 0, 0));
+    private static final GestorContactosNumaData LIMITE = new GestorContactosNumaData(new Data(0, 0, Integer.MAX_VALUE));
 
     @Override
     public GestorContactosNumaData getLimite() {

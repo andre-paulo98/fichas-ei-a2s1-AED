@@ -2,11 +2,21 @@ package pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.ordenadas.estrutura
 
 
 import pt.ipleiria.estg.dei.aed.ComparacaoLimite;
+import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.ColecaoIteravel;
+import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.ordenadas.ColecaoIteravelLinearOrdenada;
 
 public class ListaDuplaCircularBaseLimiteOrdenadaDistinta<T> extends ListaDuplaCircularBaseLimiteOrdenada<T> {
 
     public ListaDuplaCircularBaseLimiteOrdenadaDistinta(ComparacaoLimite<T> cpl) {
         super(cpl);
+    }
+
+    public ListaDuplaCircularBaseLimiteOrdenadaDistinta(ComparacaoLimite<T> cpl, ColecaoIteravelLinearOrdenada<T> colecao) {
+        super(cpl, colecao);
+    }
+
+    public ListaDuplaCircularBaseLimiteOrdenadaDistinta(ComparacaoLimite<T> cpl, ColecaoIteravel<T> colecao) {
+        super(cpl, colecao);
     }
 
     // a

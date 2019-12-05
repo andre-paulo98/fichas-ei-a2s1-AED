@@ -1,9 +1,8 @@
 package pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.naoordenadas.utilizacao;
 
-import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.IteradorIteravelDuplo;
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.naoordenadas.estruturas.ListaDuplaNaoOrdenada;
 import pt.ipleiria.estg.dei.aed.modelo.contactos.Contacto;
-import pt.ipleiria.estg.dei.aed.modelo.contactos.Data;
+import pt.ipleiria.estg.dei.aed.modelo.Data;
 
 public class MainPraticaListaDuplaNaoOrdenada {
 

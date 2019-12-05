@@ -1,7 +1,7 @@
 package pt.ipleiria.estg.dei.aed.modelo.contactos.io;
 
 import pt.ipleiria.estg.dei.aed.modelo.contactos.Contacto;
-import pt.ipleiria.estg.dei.aed.modelo.contactos.Data;
+import pt.ipleiria.estg.dei.aed.modelo.Data;
 
 import java.io.*;
 import java.util.InvalidPropertiesFormatException;
