@@ -1,5 +1,7 @@
 package pt.ipleiria.estg.dei.aed.modelo.contactos;
 
+import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.IteradorIteravel;
+import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.IteradorIteravelDuplo;
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.associativas.estruturas.TabelaHashPorSondagemComIncrementoPorHash;
 import pt.ipleiria.estg.dei.aed.colecoes.iteraveis.lineares.ordenadas.estruturas.ListaDuplaCircularBaseLimiteOrdenada;
 import pt.ipleiria.estg.dei.aed.modelo.HashingIncrementoString;
@@ -50,5 +52,18 @@ public class GestorContactosNumaDataFicha7 {
         }
         // remover o contacto da lista de contactos (outra estrutura)
         return contactos.remover(contacto);
+    }
+
+    public IteradorIteravelDuplo<Contacto> iterador() {
+        return contactos.iterador();
+    }
+
+    public IteradorIteravelDuplo<Contacto> consultar(String morada) {
+        ListaDuplaCircularBaseLimiteOrdenada<Contacto> contactosNumaMorada = contactosPorMorada.consultar(morada);
+        return contactosNumaMorada != null ? contactosNumaMorada.iterador() : GestorContactosOtimizadoFicha7.ITERADOR_CONTACTOS_VAZIO;
+    }
+
+    public IteradorIteravel<String> iteradorMoradas() {
+        return contactosPorMorada.iteradorChaves();
     }
 }

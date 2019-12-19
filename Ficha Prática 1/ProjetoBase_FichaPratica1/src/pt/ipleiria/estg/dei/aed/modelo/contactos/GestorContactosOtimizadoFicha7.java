@@ -17,7 +17,7 @@ public enum GestorContactosOtimizadoFicha7 {
     INSTANCIA;
 
     public static final IteradorIteravelDuplo<Contacto> ITERADOR_CONTACTOS_VAZIO = new ListaDuplaCircularBaseLimiteOrdenada<>(ComparacaoLimiteContactosPrimNomeAscUltiNomeAsc.CRITERIO).iterador();
-    public static final IteradorIteravel<String> ITERADOR_DATAS_VAZIO = new ListaSimplesCircularBaseNaoOrdenada<String>().iterador();
+    public static final IteradorIteravel<String> ITERADOR_MORADAS_VAZIO = new ListaSimplesCircularBaseNaoOrdenada<String>().iterador();
 
     private TabelaHashPorSondagemComIncrementoPorHash<Data, GestorContactosNumaDataFicha7> contactosPorData;
     private ListaDuplaCircularBaseLimiteOrdenadaDistinta<Data> datas;
@@ -31,7 +31,7 @@ public enum GestorContactosOtimizadoFicha7 {
     }
 
     public void inserir(Contacto contacto) {
-        if(contacto == null) {
+        if (contacto == null) {
             throw new IllegalArgumentException("Não pode inserir contactos nulos");
         }
         // inserir o contacto na TABELA HASH por numero telefone
@@ -41,7 +41,7 @@ public enum GestorContactosOtimizadoFicha7 {
         // obter o gestor interno que gere esta data
         GestorContactosNumaDataFicha7 contactosNumaData = contactosPorData.consultar(dataNascimento);
         // se não existir nenhum contacto com a mesma data do contacto que se pretende inserir
-        if(contactosNumaData == null) {
+        if (contactosNumaData == null) {
             // criar um gestor interno
             contactosNumaData = new GestorContactosNumaDataFicha7();
             // inserir na TH
@@ -55,45 +55,75 @@ public enum GestorContactosOtimizadoFicha7 {
     }
 
     public Contacto remover(Contacto contacto) {
-        if(contacto == null) {
+        if (contacto == null || !contacto.equals(contactosPorNumeroTelefone.consultar(contacto.getNumTelefone()))) {
             return null;
         }
         // remover o contacto da th por numero de telefone
         Contacto contactoRemovido = contactosPorNumeroTelefone.remover(contacto.getNumTelefone());
-        if(contactoRemovido == null) {
+        if (contactoRemovido == null) {
             return null;
         }
 
+        return removerAuxiliar(contacto);
+    }
+
+    private Contacto removerAuxiliar(Contacto contacto) {
         Data dataNascimento = contacto.getDataNascimento();
         // consultar o gestor interno que gere esta data (!= null)
         GestorContactosNumaDataFicha7 contactosNumaData = contactosPorData.consultar(dataNascimento);
         // remover o contacto do gestor interno
         contactosNumaData.remover(contacto);
         // se o gestor ficar vazio
-        if(contactosNumaData.isVazio()){
+        if (contactosNumaData.isVazio()) {
             // remover da TH contactosPorData
             contactosPorData.remover(dataNascimento);
             // remover a data da lista das datas
             datas.remover(dataNascimento);
         }
         // devolver o contacto removido
-        return contactoRemovido;
+        return contacto;
     }
 
     public IteradorIteravelDuplo<Contacto> remover(Data data) {
-       ListaDuplaCircularBaseLimiteOrdenada<Contacto> contactosNumaData = contactosPorData.remover(data);
-       if(contactosNumaData == null) {
-           return ITERADOR_VAZIO;
-       }
+        GestorContactosNumaDataFicha7 contactosNumaData =
+                contactosPorData.consultar(data);
+        if(contactosNumaData == null) {
+            return ITERADOR_CONTACTOS_VAZIO;
+        }
+        datas.remover(data);
+        IteradorIteravelDuplo<Contacto> iterador = contactosNumaData.iterador();
+        for (Contacto contacto : iterador) {
+            contactosPorNumeroTelefone.remover(contacto.getNumTelefone());
+        }
+        iterador.reiniciar();
+        return iterador;
+    }
 
-       datas.remover(data);
-       return contactosNumaData.iterador();
+    public Contacto remover(long numeroTelefone) {
+        Contacto contactoRemovido = contactosPorNumeroTelefone.remover(numeroTelefone);
+        if(contactoRemovido == null) {
+            return null;
+        }
+        return removerAuxiliar(contactoRemovido);
+    }
+
+    public Contacto consultar(long numeroTelefone) {
+        return contactosPorNumeroTelefone.consultar(numeroTelefone);
+    }
+
+    public IteradorIteravelDuplo<Contacto> consultar(Data data, String morada) {
+        GestorContactosNumaDataFicha7 contactosNumaData = contactosPorData.consultar(data);
+        return contactosNumaData != null ? contactosNumaData.consultar(morada) : ITERADOR_CONTACTOS_VAZIO;
+    }
+
+    public IteradorIteravel<String> consultarMoradas(Data data) {
+        GestorContactosNumaDataFicha7 contactosNumaData = contactosPorData.consultar(data);
+        return contactosNumaData != null ? contactosNumaData.iteradorMoradas() : ITERADOR_MORADAS_VAZIO;
     }
 
     public IteradorIteravelDuplo<Contacto> consultar(Data data) {
-        ListaDuplaCircularBaseLimiteOrdenada contactosNumaData =
-                contactosPorData.consultar(data);
-        return contactosNumaData != null ? contactosNumaData.iterador() : ITERADOR_VAZIO;
+        GestorContactosNumaDataFicha7 contactosNumaData = contactosPorData.consultar(data);
+        return contactosNumaData != null ? contactosNumaData.iterador() : ITERADOR_CONTACTOS_VAZIO;
     }
 
     public IteradorIteravelDuplo<Contacto> consultar(Data dataInicial, Data dataFinal) {
@@ -114,7 +144,7 @@ public enum GestorContactosOtimizadoFicha7 {
         @Override
         public void reiniciar() {
             iteradorDatas.reiniciar();
-            iteradorContactos = ITERADOR_VAZIO;
+            iteradorContactos = ITERADOR_CONTACTOS_VAZIO;
         }
 
         @Override
@@ -129,7 +159,7 @@ public enum GestorContactosOtimizadoFicha7 {
 
         @Override
         public Contacto avancar() {
-            if(!iteradorContactos.podeAvancar())
+            if (!iteradorContactos.podeAvancar())
                 iteradorContactos = contactosPorData.consultar(iteradorDatas.avancar()).iterador();
 
             return iteradorContactos.avancar();
@@ -142,7 +172,7 @@ public enum GestorContactosOtimizadoFicha7 {
 
         @Override
         public Contacto recuar() {
-            if(!iteradorContactos.podeRecuar())
+            if (!iteradorContactos.podeRecuar())
                 iteradorContactos = contactosPorData.consultar(iteradorDatas.recuar()).iterador();
 
             return iteradorContactos.recuar();
